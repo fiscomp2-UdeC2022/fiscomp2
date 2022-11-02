@@ -71,10 +71,16 @@ class Neville(Poly):
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
     
-    # xp = np.array([1, 2, 5, 7, 8, 9], float)
-    # yp = np.array([1, -2, -1, -2, 0, 2], float)
-    npoints = 20
-    xp = np.linspace(1, 9, npoints)
+    npoints = 6
+    xmin = 1
+    xmax = 9
+    
+    # nodos equiespaciados 
+    #xp = np.linspace(xmin, xmax, npoints)
+
+    # nodos de Chebyshev
+    xp = 0.5*(xmax+xmin) + 0.5*(xmax-xmin)* np.cos( (np.arange(npoints)+0.5)*np.pi/npoints)
+
     yp = np.random.randn(npoints)
 
 
@@ -83,7 +89,7 @@ if __name__ == "__main__":
     
         print(f"Polinomio interpolado: \ngrado={p.deg}\ncoef={p}")
 
-        x = np.linspace(0.5, 9.5, 500)
+        x = np.linspace(xmin, xmax, 300)
         plt.plot(x, p(x), label=f"metodo de {metodo.__name__}")
 
     plt.scatter(xp, yp, label="puntos interpolados")

@@ -27,7 +27,7 @@ Para un polinomio de la forma `P(x)=p0 + p1*x + p2*x**2 + ... + pN*x**N`, esta c
         self.deg = self.coef.size - 1
 
     def __call__(self, x):
-        """La clase es tratada como un functor o llamable (callable). Si `p` es una instancia de `Poly`, entonces `p(x)` evalúa el polinomio en un valor de `x`. """
+        """La clase es tratada como un functor o llamable (callable). Si `p` es una instancia de `Poly`, entonces `p(x)` evalúa el polinomio en un valor de `x` usando el método de Horner. """
         x = np.asarray(x)
 
         value = np.zeros_like(x)   #self.coef[-1]
